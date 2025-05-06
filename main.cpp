@@ -1,52 +1,51 @@
 #include <iostream>
-#include <string.h>
+#include <vector>
 #include "header.h"
-#include "read.h"
 using namespace std;
 
-int main(){
-    int n;
-    cout<<"number_employees: ";
-    cin>>n;
-    string name,department;
-    int year_employment,salary,choice=0;
-    employee *list_employee = new employee[n];
+int main()
+{
+    vector<employee> list_employee = {employee("artem", "pinatu_xui", 123000, 1320000)};
+    int choice;
 
-    while (choice!=3)
+    while (true)
     {
         interface();
-        int choice;
-        cout<<"Enter your choice: ";
-        cin>>choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
         switch (choice)
         {
         case 1:
-            add_employee(list_employee,n);
+            add_employee(list_employee);
             break;
+
         case 2:
-            for(int i=0;i<n;i++){
-                list_employee[i].print_info();
+            for (const auto &emp : list_employee)
+            {
+                emp.print_info();
             }
             break;
+
         case 3:
-            cout<<"Average Experience: "<<average_experience(list_employee,n)<<endl;
+            cout << "Average Experience: " << average_experience(list_employee) << endl;
             break;
+
         case 4:
-            sort_employee(list_employee,n);
-            cout<<"Sorted by year of employment: "<<endl;
-            for(int i=0;i<n;i++){
-                list_employee[i].print_info();
+            sort_employee(list_employee);
+            cout << "Sorted by year of employment: " << endl;
+            for (const auto &emp : list_employee)
+            {
+                emp.print_info();
             }
             break;
+
         case 5:
-            delete[] list_employee;
             return 0;
-        
+
         default:
-            cout<<"e("<<endl;
+            cout << "Invalid choice. Please try again." << endl;
             break;
         }
     }
-    delete[] list_employee;
 }
-
