@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    vector<employee> list_employee = {employee("artem", "pinatu_xui", 123000, 1320000)};
+    vector<employee> list_employee = {employee("artem", "IT", 2015, 1320000)};
     int choice;
 
     while (true)
@@ -13,6 +13,14 @@ int main()
         interface();
         cout << "Enter your choice: ";
         cin >> choice;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please try again." << endl;
+            continue;
+        }
 
         switch (choice)
         {

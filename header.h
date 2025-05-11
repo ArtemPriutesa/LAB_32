@@ -17,7 +17,7 @@ public:
 
     employee();
     employee(string name, string department, int year_employment, int salary);
-    void print_info();
+    void print_info() const;
 };
 
 void interface();

@@ -29,10 +29,11 @@ void add_employee(vector<employee> &list_employee)
 
 float average_experience(const vector<employee> &list_employee)
 {
+    int current_year = 2025; // Поточний рік
     int total_experience = 0;
     for (const auto &emp : list_employee)
     {
-        total_experience += 2025 - emp.c_year_employment;
+        total_experience += current_year - emp.c_year_employment;
     }
     return static_cast<float>(total_experience) / list_employee.size();
 }
@@ -74,7 +75,7 @@ employee::employee(string name, string department, int year_employment, int sala
     }
 }
 
-void employee::print_info()
+void employee::print_info() const
 {
     cout << "Name: " << c_name << endl;
     cout << "Department: " << c_department << endl;
